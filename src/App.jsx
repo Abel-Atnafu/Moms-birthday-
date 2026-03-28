@@ -2,21 +2,12 @@ import React from 'react'
 import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom'
 import Home from './pages/Home'
 import Log from './pages/Log'
-
-const navStyle = {
-  position: 'fixed', bottom: 0, left: 0, right: 0,
-  background: '#1a1a24',
-  borderTop: '1px solid #2e2e3d',
-  display: 'flex',
-  justifyContent: 'space-around',
-  padding: '10px 0 max(10px, env(safe-area-inset-bottom))',
-  zIndex: 100,
-}
+import History from './pages/History'
 
 const linkStyle = {
   display: 'flex', flexDirection: 'column', alignItems: 'center',
-  gap: 4, fontSize: 11, color: '#8888aa', transition: 'color .2s',
-  padding: '4px 20px',
+  gap: 3, fontSize: 11, color: '#6b7280', transition: 'color .2s',
+  padding: '6px 24px', textDecoration: 'none',
 }
 
 export default function App() {
@@ -26,16 +17,28 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/log" element={<Log />} />
+          <Route path="/history" element={<History />} />
         </Routes>
       </div>
-      <nav style={navStyle}>
-        <NavLink to="/" end style={({ isActive }) => ({ ...linkStyle, color: isActive ? '#7c6af5' : '#8888aa' })}>
-          <span style={{ fontSize: 22 }}>🏠</span>
+      <nav style={{
+        position: 'fixed', bottom: 0, left: 0, right: 0,
+        background: '#0a0a0a',
+        borderTop: '1px solid #1e1e1e',
+        display: 'flex', justifyContent: 'space-around',
+        padding: '8px 0 max(8px, env(safe-area-inset-bottom))',
+        zIndex: 100,
+      }}>
+        <NavLink to="/" end style={({ isActive }) => ({ ...linkStyle, color: isActive ? '#22c55e' : '#6b7280' })}>
+          <span style={{ fontSize: 24 }}>🏠</span>
           Home
         </NavLink>
-        <NavLink to="/log" style={({ isActive }) => ({ ...linkStyle, color: isActive ? '#7c6af5' : '#8888aa' })}>
-          <span style={{ fontSize: 22 }}>📝</span>
-          Log
+        <NavLink to="/log" style={({ isActive }) => ({ ...linkStyle, color: isActive ? '#22c55e' : '#6b7280' })}>
+          <span style={{ fontSize: 24 }}>📷</span>
+          Log Meal
+        </NavLink>
+        <NavLink to="/history" style={({ isActive }) => ({ ...linkStyle, color: isActive ? '#22c55e' : '#6b7280' })}>
+          <span style={{ fontSize: 24 }}>🕐</span>
+          History
         </NavLink>
       </nav>
     </BrowserRouter>
